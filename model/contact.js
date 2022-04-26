@@ -8,5 +8,9 @@ class Contact{
         this.#phone_Number=phone_number
         this.#fullName=fullname
     }
+
+    get fullname(){
+        return this.#fullName
+    }
 }
 export {Contact}

@@ -21,7 +21,7 @@ function setupForm(selector, parent=document) {
         for (const input of inputsList) {
             formObject[input.name] = input.value
         }
-        
+
         console.log(formObject)
         //Validação de dados
         ContactValidator.exec(formObject.fullname)
@@ -30,7 +30,6 @@ function setupForm(selector, parent=document) {
         
         const contact=new Contact(formObject)
         addContact(contact)
-        console.log(Contact)
         //Comunicar com API externa
     } catch (error) {
         console.error(error)
