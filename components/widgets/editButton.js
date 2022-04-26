@@ -1,7 +1,7 @@
 
-function createEditButton(text, clickEvent){
+function createEditButton(clickEvent){
   const editBtn = document.createElement('button')
-  editBtn.textContent = text
+  editBtn.textContent = 'Editar'
   editBtn.addEventListener('click', clickEvent)
   editBtn.classList.add('bg-blue')
 
