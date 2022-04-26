@@ -1,11 +1,10 @@
 import { Contact } from "./model/contact.js"
 import ContactValidator from "./validators/contact/index.js"
-import { addContact, onloadContactList } from "./store/contactsList.js"
+import {addContact, renderContactList} from './presenter/contactList.js'
 
 //UseCase - Gravar o contacto
 function setupForm(selector, parent=document) {
     const formEl=parent.querySelector(selector)
-
     
     formEl.addEventListener('submit',(e)=>{
         e.preventDefault()
@@ -38,7 +37,7 @@ function setupForm(selector, parent=document) {
 
 function setupContactList(){
     document.addEventListener('DOMContentLoaded', () => {
-        onloadContactList()
+        renderContactList()
     })
 }
 

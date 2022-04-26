@@ -1,16 +1,26 @@
 class Contact{
-    #fullName
+    #_id
+    #fullname
     #phone_Number
     #email
     constructor(props){
-        const{fullname,phone_number,email}=props // desconstriur o objeto
+        const{_id, fullname,phone_number,email}=props // destruturar o objeto
+        this.#_id = _id
         this.#email=email
         this.#phone_Number=phone_number
-        this.#fullName=fullname
+        this.#fullname=fullname
     }
 
     get fullname(){
-        return this.#fullName
+        return this.#fullname
+    }
+
+    get _id(){
+        return this.#_id
+    }
+
+    set _id(value){
+        this.#_id = value
     }
 }
 export {Contact}

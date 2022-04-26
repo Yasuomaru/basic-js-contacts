@@ -1,4 +1,3 @@
-import {addContactToUI, renderContactList} from '../presenter/contactList.js'
 import { Contact } from "../model/contact.js"
 
 const ContactList = [
@@ -7,20 +6,21 @@ const ContactList = [
   new Contact ({fullname: 'Contact 03', phone_number: '939939939', email: 'contact3@mail.pt'})
 ]
 
-function addContact(contact) {
+function addContactToList(contact) {
   //Add to contact list
+  contact._id = ContactList.length
   ContactList.push(contact)
+}
 
-  //Refresh UI list
-  addContactToUI(contact)
+function editContact(contact){
+  const idx = ContactList.findIndex(c => {c._id === contact._id})
+  ContactList[idx] = contact
+
+  renderContactList(getContactList())
 }
 
 function getContactList(){
   return ContactList
 }
 
-function onloadContactList(){
-  renderContactList(getContactList())
-}
-
-export {addContact, getContactList, onloadContactList}
+export {addContactToList, editContact, getContactList}

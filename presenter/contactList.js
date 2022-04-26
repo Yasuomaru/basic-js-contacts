@@ -1,15 +1,22 @@
-import {createContactListItem} from '../components/contactListItem.js'
-import {getContactList} from '../store/contactsList.js'
+import { addContactToList, getContactList } from '../store/contactsList.js'
+import { addContactToUI,clearList } from '../components/contactList.js'
 
-function addContactToUI(contact, parent = document.querySelector('ul')){
-  parent.append(createContactListItem(contact))
+function addContact(contact){
+  //Refresh Data
+  addContactToList(contact)
+
+  //Refresh screen
+  addContactToUI(contact)
 }
 
-function renderContactList(contactsList){
-  const contastList = getContactList()
-  contastList.forEach(contact => {
+
+
+function renderContactList(isToClearList = false){
+  if(isToClearList) clearList()
+  
+  getContactList().forEach(contact => {
     addContactToUI(contact)
   })
 }
 
-export {addContactToUI, renderContactList}
+export {addContact, renderContactList}
