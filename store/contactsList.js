@@ -8,8 +8,9 @@ const ContactList = [
 
 function addContactToList(contact) {
   //Add to contact list
-  contact._id = ContactList.length
   ContactList.push(contact)
+
+  console.log(ContactList)
 }
 
 function editContact(contact){
