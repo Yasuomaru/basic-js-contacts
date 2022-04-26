@@ -4,3 +4,8 @@
     padding: 0;
     text-decoration: none;
 }
+
+
+.bg-blue {
+    background-color: rgb(66, 134, 237);
+}

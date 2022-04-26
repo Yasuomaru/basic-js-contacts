@@ -1,3 +1,4 @@
-import { setupForm } from "./events.js";
+import { setupForm , setupContactList} from "./events.js";
 
 setupForm('form')
+setupContactList()

@@ -1,6 +1,6 @@
 import { Contact } from "./model/contact.js"
 import ContactValidator from "./validators/contact/index.js"
-import { addContact } from "./store/contactsList.js"
+import { addContact, onloadContactList } from "./store/contactsList.js"
 
 //UseCase - Gravar o contacto
 function setupForm(selector, parent=document) {
@@ -22,7 +22,6 @@ function setupForm(selector, parent=document) {
             formObject[input.name] = input.value
         }
 
-        console.log(formObject)
         //Validação de dados
         ContactValidator.exec(formObject.fullname)
         
@@ -37,7 +36,13 @@ function setupForm(selector, parent=document) {
     })
 }
 
-export {setupForm}
+function setupContactList(){
+    document.addEventListener('DOMContentLoaded', () => {
+        onloadContactList()
+    })
+}
+
+export {setupForm, setupContactList}
 
 
 // Add contactacto ha lista de dados
