@@ -1,6 +1,6 @@
 import { Contact } from "./model/contact.js"
 import ContactValidator from "./validators/contact/index.js"
-import {addContact, renderContactList} from './presenter/contactList.js'
+import {addContact,renderContactListOnLoad} from './presenter/contactList.js'
 
 //UseCase - Gravar o contacto
 function setupForm(selector, parent=document) {
@@ -37,7 +37,7 @@ function setupForm(selector, parent=document) {
 
 function setupContactList(){
     document.addEventListener('DOMContentLoaded', () => {
-        renderContactList()
+        renderContactListOnLoad()
     })
 }
 

@@ -1,5 +1,5 @@
 import { addContactToList, getContactList } from '../store/contactsList.js'
-import { addContactToUI,clearList } from '../components/contactList.js'
+import { addContactToUI, renderList } from '../components/contactList.js'
 
 function addContact(contact){
   //Refresh Data
@@ -11,12 +11,8 @@ function addContact(contact){
 
 
 
-function renderContactList(isToClearList = false){
-  if(isToClearList) clearList()
-  
-  getContactList().forEach(contact => {
-    addContactToUI(contact)
-  })
+function renderContactListOnLoad(isToClearList = false){
+  renderList(getContactList())
 }
 
-export {addContact, renderContactList}
+export {addContact, renderContactListOnLoad}

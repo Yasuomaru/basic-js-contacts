@@ -1,13 +1,21 @@
 import {createContactListItem} from '../components/contactListItem.js'
 
-const ulEl = document.querySelector('ul')
+const ul = document.querySelector('ul')
 
 function addContactToUI(contact){
-  ulEl.append(createContactListItem(contact))
+  ul.append(createContactListItem(contact))
 }
 
 function clearList() {
-  ulEl.innerHtml = ''
+  ul.innerHtml = ''
 }
 
-export {addContactToUI, clearList}
+function renderList(contactsList, isToClearList = false){
+  if(isToClearList) clearList()
+  
+  contactsList.forEach(contact => {
+    addContactToUI(contact)
+  })
+}
+
+export {addContactToUI, clearList, renderList}

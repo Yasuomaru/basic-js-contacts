@@ -1,9 +1,11 @@
 class Contact{
+    #_id
     #fullname
     #phone_Number
     #email
     constructor(props){
         const{_id, fullname,phone_number,email}=props // destruturar o objeto
+        this.#_id = _id
         this.#email=email
         this.#phone_Number=phone_number
         this.#fullname=fullname
