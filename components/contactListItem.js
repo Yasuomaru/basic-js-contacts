@@ -7,7 +7,7 @@ function createContactListItem(contact){
 
   liElement.textContent = contact.fullname
   liElement.append(createEditButton(() => {
-    editContact(JSON.stringify(contact))
+    editContact(contact)
   }))
   liElement.append(createDeleteButton(() => {
     deleteContact(JSON.stringify(contact))

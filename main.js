@@ -1,4 +1,6 @@
-import { setupForm , setupContactList} from "./events.js";
+import { registerFormSubmit } from "./components/contactForm.js";
+import { setupContactList} from "./events.js";
 
-setupForm('form')
+
 setupContactList()
+registerFormSubmit()

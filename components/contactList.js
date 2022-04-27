@@ -7,10 +7,11 @@ function addContactToUI(contact){
 }
 
 function clearList() {
-  ul.innerHtml = ''
+  ul.innerHTML = ''
 }
 
 function renderList(contactsList, isToClearList = false){
+  
   if(isToClearList) clearList()
   
   contactsList.forEach(contact => {

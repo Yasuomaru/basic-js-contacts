@@ -1,25 +1,33 @@
 import { addContactToList, getContactList } from '../store/contactsList.js'
 import { addContactToUI, renderList } from '../components/contactList.js'
+import { Contact } from '../model/contact.js'
+import ContactValidator from '../validators/contact/index.js'
 
-function addContact(contact){
+
+function addContact({_id, fullname, phone_number, email}){
+  //Validação de dados
+  ContactValidator.exec(fullname)
+  
+  const newContact = new Contact({_id, fullname, phone_number, email})
+
   //Refresh Data
-  addContactToList(contact)
+  addContactToList(newContact)
 
   //Refresh screen
-  addContactToUI(contact)
+  addContactToUI(newContact)
 }
 
 function editContact(contact){
   //Edit contact in data list
-  alert(contact)
+  console.log(contact)
 
   //Edit contact in UI
-  renderList(getContactList())
+  renderList(getContactList(), true)
 }
 
 function deleteContact(contact){
-  alert(contact)
-  renderList(getContactList())
+  console.log(contact)
+  renderList(getContactList(), true)
 }
 
 
