@@ -21,8 +21,13 @@ function editContact(contact){
   renderContactList(getContactList())
 }
 
+function deleteContactFromList(contact){
+  const idx = ContactList.findIndex(c => c._id === contact._id)
+  if (idx > -1) ContactList.splice(idx, 1)
+} 
+
 function getContactList(){
   return ContactList
 }
 
-export {addContactToList, editContact, getContactList}
+export {addContactToList, editContact, deleteContactFromList,getContactList}

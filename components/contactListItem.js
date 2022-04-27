@@ -10,7 +10,7 @@ function createContactListItem(contact){
     editContact(contact)
   }))
   liElement.append(createDeleteButton(() => {
-    deleteContact(JSON.stringify(contact))
+    deleteContact(contact)
   }))
 
   return liElement

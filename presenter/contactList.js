@@ -1,4 +1,4 @@
-import { addContactToList, getContactList } from '../store/contactsList.js'
+import { addContactToList, deleteContactFromList, getContactList } from '../store/contactsList.js'
 import { addContactToUI, renderList } from '../components/contactList.js'
 import { Contact } from '../model/contact.js'
 import ContactValidator from '../validators/contact/index.js'
@@ -26,7 +26,10 @@ function editContact(contact){
 }
 
 function deleteContact(contact){
-  console.log(contact)
+  //Remove contact
+  deleteContactFromList(contact)
+
+  //Render list
   renderList(getContactList(), true)
 }
 
