@@ -21,7 +21,7 @@ function editContact(contact){
   //Edit contact in data list
   console.log(contact)
 
-  //Edit contact in UI
+  //Render list
   renderList(getContactList(), true)
 }
 

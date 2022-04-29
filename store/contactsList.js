@@ -17,8 +17,6 @@ function addContactToList(contact) {
 function editContact(contact){
   const idx = ContactList.findIndex(c => {c._id === contact._id})
   ContactList[idx] = contact
-
-  renderContactList(getContactList())
 }
 
 function deleteContactFromList(contact){
