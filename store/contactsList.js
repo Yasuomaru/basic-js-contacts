@@ -14,8 +14,12 @@ function addContactToList(contact) {
   console.log(ContactList)
 }
 
-function editContact(contact){
-  const idx = ContactList.findIndex(c => {c._id === contact._id})
+function editContactFromList(contact){
+  const idx = ContactList.find(c => {
+    console.log(c)
+     console.log(contact) 
+    c._id === contact._id})
+  
   ContactList[idx] = contact
 }
 
@@ -28,4 +32,4 @@ function getContactList(){
   return ContactList
 }
 
-export {addContactToList, editContact, deleteContactFromList,getContactList}
+export {addContactToList, editContactFromList,deleteContactFromList,getContactList}

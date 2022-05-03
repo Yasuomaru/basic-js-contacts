@@ -1,7 +1,8 @@
-import { addContactToList, deleteContactFromList, getContactList } from '../store/contactsList.js'
+import { addContactToList, deleteContactFromList, editContactFromList, getContactList } from '../store/contactsList.js'
 import { addContactToUI, renderList } from '../components/contactList.js'
 import { Contact } from '../model/contact.js'
 import ContactValidator from '../validators/contact/index.js'
+
 
 
 function addContact({_id, fullname, phone_number, email}){
@@ -19,7 +20,7 @@ function addContact({_id, fullname, phone_number, email}){
 
 function editContact(contact){
   //Edit contact in data list
-  console.log(contact)
+  editContactFromList(contact)
 
   //Render list
   renderList(getContactList(), true)
