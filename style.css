@@ -45,6 +45,10 @@ input[type="reset"] {
     -o-border-radius: 0.2rem;
 }
 
+button {
+    color: white;
+}
+
 
 input:not(input[type="submit"]):not(input[type="reset"]){
     padding: 0.2rem;
@@ -78,9 +82,9 @@ li {
 }
 
 .bg-blue {
-    background-color: rgb(66, 134, 237);
+    background-color: rgb(66, 135, 237);
 }
 
 .bg-red {
-    background-color: rgb(229, 61, 61);
+    background-color: rgb(244, 66, 66);
 }
