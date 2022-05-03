@@ -1,8 +1,8 @@
-import {renderContactListOnLoad} from './presenter/contactList.js'
+import {renderContactList} from './presenter/contactList.js'
 
 function setupContactList(){
     document.addEventListener('DOMContentLoaded', () => {
-        renderContactListOnLoad()
+        renderContactList()
     })
 }
 

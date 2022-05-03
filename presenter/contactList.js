@@ -34,8 +34,8 @@ function deleteContact(contact){
 }
 
 
-function renderContactListOnLoad(isToClearList = false){
+function renderContactList(isToClearList = false){
   renderList(getContactList())
 }
 
-export {addContact, renderContactListOnLoad, editContact, deleteContact}
+export {addContact, renderContactList, editContact, deleteContact}

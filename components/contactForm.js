@@ -27,6 +27,11 @@ contactForm.addEventListener('submit',(e)=>{
     //Guardar os dados
     addContact(formObject)
 
+    //Limpar formulário depois de criar o contacto
+    for (const input of inputsList) {
+      input.value = ''
+    }
+
     //Comunicar com API externa
   }catch (error) {
     console.error(error)
