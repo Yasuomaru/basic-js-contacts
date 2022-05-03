@@ -6,7 +6,7 @@ import { createEditButton } from "./widgets/editButton.js"
 function createContactListItem(contact){
   const liElement = document.createElement('li')
 
-  liElement.textContent = contact.fullname
+  liElement.innerText = `${contact.fullname} - ${contact.phone_number} - ${contact.email}`
   liElement.append(createEditButton(() => {
     setFormData(contact)
   }))

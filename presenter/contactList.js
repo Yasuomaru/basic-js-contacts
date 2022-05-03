@@ -18,7 +18,8 @@ function addContact({_id, fullname, phone_number, email}){
 }
 
 function editContact(contact){
-
+  ContactValidator.exec(contact.fullname)
+  
   const newContact = new Contact(contact)
   //Edit contact in data list
   editContactFromList(newContact)

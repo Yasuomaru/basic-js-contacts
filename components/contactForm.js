@@ -18,6 +18,11 @@ function getFormData(){
   }
 }
 
+function registerFormEvents(){
+  registerFormSubmit()
+  registerFormReset()
+}
+
 function registerFormSubmit(){
 contactForm.addEventListener('submit',(e)=>{
   e.preventDefault()
@@ -39,4 +44,10 @@ contactForm.addEventListener('submit',(e)=>{
 })
 }
 
-export {registerFormSubmit, setFormData}
+function registerFormReset(){
+  contactForm.addEventListener('reset', ()=>{
+    contactForm._id.value = ''
+  })
+}
+
+export {registerFormEvents, setFormData}
