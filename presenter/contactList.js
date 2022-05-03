@@ -4,7 +4,6 @@ import { Contact } from '../model/contact.js'
 import ContactValidator from '../validators/contact/index.js'
 
 
-
 function addContact({_id, fullname, phone_number, email}){
   //Validação de dados
   ContactValidator.exec(fullname)
@@ -19,8 +18,10 @@ function addContact({_id, fullname, phone_number, email}){
 }
 
 function editContact(contact){
+
+  const newContact = new Contact(contact)
   //Edit contact in data list
-  editContactFromList(contact)
+  editContactFromList(newContact)
 
   //Render list
   renderList(getContactList(), true)

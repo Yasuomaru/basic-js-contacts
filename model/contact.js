@@ -1,4 +1,4 @@
-class Contact{
+class Contact {
     #_id
     #fullname
     #phone_number
@@ -29,6 +29,23 @@ class Contact{
 
     set _id(value){
         this.#_id = value
+    }
+
+    set fullname(value){
+        this.#fullname = value
+    }
+
+    set email(value){
+        this.#email = value
+    }
+
+    set phone_number(value){
+        this.#phone_number = value
+    }
+
+
+    save(){
+        saveExternalAPI(this)
     }
 }
 export {Contact}

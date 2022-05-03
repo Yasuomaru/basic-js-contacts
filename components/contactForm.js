@@ -39,8 +39,4 @@ contactForm.addEventListener('submit',(e)=>{
 })
 }
 
-// const rawList=[...e.target.children] // [... ] para introduzir num array
-// const inputsList=rawList.filter(input => {return input.name !== ''})
-        
-
 export {registerFormSubmit, setFormData}

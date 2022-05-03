@@ -6,21 +6,28 @@ const ContactList = [
   new Contact ({_id: 2, fullname: 'Contact 03', phone_number: '939939939', email: 'contact3@mail.pt'})
 ]
 
+function getTotalContacts(){
+  return ContactList.length
+}
+
+function getContactById(_id){
+  return ContactList.find(c => c._id == _id)
+}
+
 function addContactToList(contact) {
   //Add to contact list
   contact._id = ContactList.length
   ContactList.push(contact)
-
-  console.log(ContactList)
 }
 
-function editContactFromList(contact){
-  const idx = ContactList.find(c => {
-    console.log(c)
-     console.log(contact) 
-    c._id === contact._id})
-  
-  ContactList[idx] = contact
+function editContactFromList(updatedContact){
+  const contact = getContactById(updatedContact._id)
+
+  contact.fullname = updatedContact.fullname
+  contact.email = updatedContact.email
+  contact.phone_number = updatedContact.phone_number
+
+  console.log(ContactList)
 }
 
 function deleteContactFromList(contact){
