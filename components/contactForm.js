@@ -25,7 +25,7 @@ function registerFormEvents(){
 
 function registerFormSubmit(){
   
-contactForm.addEventListener('submit',function(e){
+contactForm.addEventListener('change',function(e){
   e.preventDefault()
   //console.log(e.target.children[0].value) // vai buscar o que está na DOM
   try {
@@ -39,13 +39,8 @@ contactForm.addEventListener('submit',function(e){
     setFormData({})
 
     //Criar evento
-    const event = new Event('contactAddedToList')
+    const eventWithData = new CustomEvent('contactAddedToListWithData', {detail: e.target.value})
 
-    const eventWithData = new CustomEvent('contactAddedToListWithData', {detail: formObject})
-    
-    // console.log(this)
-    //emitir o evento
-    document.dispatchEvent(event)
     document.dispatchEvent(eventWithData)
 
     //Comunicar com API externa

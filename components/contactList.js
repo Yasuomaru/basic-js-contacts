@@ -3,7 +3,7 @@ import {createContactListItem} from '../components/contactListItem.js'
 const ul = document.querySelector('ul')
 
 document.addEventListener('contactAddedToListWithData', function(e){
-  addContactToUI(e.detail)
+  ul.textContent = e.detail
 })
 
 function addContactToUI(contact){
