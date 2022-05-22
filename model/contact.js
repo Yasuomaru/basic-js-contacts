@@ -1,3 +1,5 @@
+import { createContact, destroyContact, updateContact } from "../services/contact.js"
+
 class Contact {
     #_id
     #fullname
@@ -43,9 +45,25 @@ class Contact {
         this.#phone_number = value
     }
 
+    toJSON(){
+        return {
+            _id : this._id,
+            email : this.email,
+            phone_number : this.phone_number,
+            fullname : this.fullname
+        }
+    }
 
-    save(){
-        saveExternalAPI(this)
+
+    async save(){
+        if( this._id != '')
+            await updateContact(this.toJSON())
+        else
+            await createContact(this.toJSON())
+    }
+
+    async delete(){
+        await destroyContact(this._id)
     }
 }
 export {Contact}

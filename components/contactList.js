@@ -1,9 +1,22 @@
 import {createContactListItem} from '../components/contactListItem.js'
+import {getContactList} from "../store/contactsList.js"
 
 const ul = document.querySelector('ul')
 
 document.addEventListener('contactAddedToListWithData', function(e){
-  ul.textContent = e.detail
+  addContactToUI(e.detail)
+})
+
+document.addEventListener('contactUpdated', function(e){
+  renderList(true)
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderList()
+})
+
+document.addEventListener('contactDeleted', () =>{
+  renderList(true)
 })
 
 function addContactToUI(contact){
@@ -16,12 +29,14 @@ function clearList() {
   ul.innerHTML = ''
 }
 
-function renderList(contactsList, isToClearList = false){
+function renderList(isToClearList = false){
   
   if(isToClearList) clearList()
-  
-  contactsList.forEach(contact => {
-    addContactToUI(contact)
+
+  getContactList().then(contactsList => {
+    contactsList.forEach(contact => {
+      addContactToUI(contact)
+    })
   })
 }
 

@@ -1,8 +1,8 @@
-import { addContact, editContact } from "../presenter/contactList.js"
+import {addContact, editContact} from '../store/contactsList.js'
 
 const contactForm = document.querySelector('form')
 
-function setFormData({_id = -1, fullname = '', phone_number = '', email = ''}){
+function setFormData({_id = '', fullname = '', phone_number = '', email = ''}){
   contactForm._id.value = _id
   contactForm.fullname.value = fullname
   contactForm.phone_number.value = phone_number
@@ -25,7 +25,7 @@ function registerFormEvents(){
 
 function registerFormSubmit(){
   
-contactForm.addEventListener('change',function(e){
+contactForm.addEventListener('submit',function(e){
   e.preventDefault()
   //console.log(e.target.children[0].value) // vai buscar o que está na DOM
   try {
@@ -33,15 +33,13 @@ contactForm.addEventListener('change',function(e){
     const formObject = getFormData()
 
     //Guardar os dados
-    formObject._id <= 0 ? addContact(formObject) : editContact(formObject)
+    if (!formObject._id || formObject._id === '')
+      addContact(formObject)
+    else
+      editContact(formObject)
     
     //Limpar formulário depois de criar o contacto
     setFormData({})
-
-    //Criar evento
-    const eventWithData = new CustomEvent('contactAddedToListWithData', {detail: e.target.value})
-
-    document.dispatchEvent(eventWithData)
 
     //Comunicar com API externa
   }catch (error) {

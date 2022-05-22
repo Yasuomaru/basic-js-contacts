@@ -1,4 +1,4 @@
-import { deleteContact } from "../presenter/contactList.js"
+import { deleteContact } from "../store/contactsList.js"
 import { setFormData } from "./contactForm.js"
 import { createDeleteButton } from "./widgets/deleteButton.js"
 import { createEditButton } from "./widgets/editButton.js"
@@ -10,8 +10,8 @@ function createContactListItem(contact){
   liElement.append(createEditButton(() => {
     setFormData(contact)
   }))
-  liElement.append(createDeleteButton(() => {
-    deleteContact(contact)
+  liElement.append(createDeleteButton(async() => {
+    await deleteContact(contact)
   }))
 
   return liElement

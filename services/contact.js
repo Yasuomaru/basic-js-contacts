@@ -37,6 +37,8 @@ async function createContact(contact){
 }
 //Update
 async function updateContact(contact){
+  console.log(contact)
+  console.log(`${base_url}/${contact._id}`)
   const response = await fetch(`${base_url}/${contact._id}`, {
     method: 'PUT',
     headers,
@@ -48,7 +50,7 @@ async function updateContact(contact){
 
 
 //Delete
-async function deleteContact(_id){
+async function destroyContact(_id){
   const response = await fetch(`${base_url}/${_id}`, {
     method: 'DELETE',
     headers
@@ -57,4 +59,4 @@ async function deleteContact(_id){
   return data
 }
 
-export {getAllContacts, getContactById, createContact, updateContact, deleteContact}
+export {getAllContacts, getContactById, createContact, updateContact, destroyContact}

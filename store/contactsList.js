@@ -1,10 +1,7 @@
 import { Contact } from "../model/contact.js"
+import { getAllContacts } from "../services/contact.js"
 
-const ContactList = [
-  new Contact ({_id: 0, fullname: 'Contact 01', phone_number: '919919919', email: 'contact1@mail.pt'}),
-  new Contact ({_id: 1, fullname: 'Contact 02', phone_number: '929929929', email: 'contact2@mail.pt'}),
-  new Contact ({_id: 2, fullname: 'Contact 03', phone_number: '939939939', email: 'contact3@mail.pt'})
-]
+let ContactList = []
 
 function getTotalContacts(){
   return ContactList.length
@@ -14,29 +11,57 @@ function getContactById(_id){
   return ContactList.find(c => c._id == _id)
 }
 
-function addContactToList(contact) {
+async function addContact(contact) {
   //Add to contact list
-  contact._id = ContactList.length
-  ContactList.push(contact)
+  const newContact = new Contact(contact)
+
+  await newContact.save()
+
+  ContactList.push(newContact)
+  //Criar evento
+  const eventWithData = new CustomEvent('contactAddedToListWithData', {detail: newContact})
+
+  document.dispatchEvent(eventWithData)
 }
 
-function editContactFromList(updatedContact){
-  const contact = getContactById(updatedContact._id)
+async function editContact(updatedContact){
+  const idx = ContactList.findIndex(c => c._id === updatedContact._id)
+
+  //get contact to be updated
+  const contact = ContactList[idx]
 
   contact.fullname = updatedContact.fullname
   contact.email = updatedContact.email
   contact.phone_number = updatedContact.phone_number
 
-  console.log(ContactList)
+  await contact.save()
+
+  ContactList[idx] = contact
+
+  const contactUpdated = new CustomEvent('contactUpdated', {detail: contact})
+  document.dispatchEvent(contactUpdated)
 }
 
-function deleteContactFromList(contact){
+async function deleteContact(contact){
   const idx = ContactList.findIndex(c => c._id === contact._id)
-  if (idx > -1) ContactList.splice(idx, 1)
+  if (idx > -1) {
+
+    await ContactList[idx].delete()
+    ContactList.splice(idx, 1)
+
+    const deletedContactEvent = new Event('contactDeleted')
+    document.dispatchEvent(deletedContactEvent)
+  }
 } 
 
-function getContactList(){
+async function getContactList(){
+  if (ContactList.length <= 0){
+      const api_contacts = await getAllContacts()
+      api_contacts.forEach(contact => {
+        ContactList.push(new Contact(contact))
+      });
+    }
   return ContactList
 }
 
-export {addContactToList, editContactFromList,deleteContactFromList,getContactList}
+export {addContact, editContact,deleteContact,getContactList}
