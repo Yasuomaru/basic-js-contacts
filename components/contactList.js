@@ -2,8 +2,14 @@ import {createContactListItem} from '../components/contactListItem.js'
 
 const ul = document.querySelector('ul')
 
+document.addEventListener('contactAddedToListWithData', function(e){
+  addContactToUI(e.detail)
+})
+
 function addContactToUI(contact){
+  
   ul.append(createContactListItem(contact))
+
 }
 
 function clearList() {

@@ -6,15 +6,15 @@ import ContactValidator from '../validators/contact/index.js'
 
 function addContact({_id, fullname, phone_number, email}){
   //Validação de dados
-  ContactValidator.exec(fullname)
+  
   
   const newContact = new Contact({_id, fullname, phone_number, email})
 
   //Refresh Data
   addContactToList(newContact)
 
-  //Refresh screen
-  addContactToUI(newContact)
+  // //Refresh screen
+  // addContactToUI(newContact)
 }
 
 function editContact(contact){

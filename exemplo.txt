@@ -1,0 +1,16 @@
+//UI
+components
+pages/views*
+
+//ui-dados
+presenter
+
+
+//Dados
+store
+model
+infra
+
+
+
+helpers

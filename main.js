@@ -8,3 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   //render list on screen
   renderContactList()
 })
+
+
+document.addEventListener('contactAddedToListWithData', (e)=>{
+  console.log(e.detail)
+})

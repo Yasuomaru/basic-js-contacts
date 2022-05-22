@@ -24,7 +24,8 @@ function registerFormEvents(){
 }
 
 function registerFormSubmit(){
-contactForm.addEventListener('submit',(e)=>{
+  
+contactForm.addEventListener('submit',function(e){
   e.preventDefault()
   //console.log(e.target.children[0].value) // vai buscar o que está na DOM
   try {
@@ -37,6 +38,16 @@ contactForm.addEventListener('submit',(e)=>{
     //Limpar formulário depois de criar o contacto
     setFormData({})
 
+    //Criar evento
+    const event = new Event('contactAddedToList')
+
+    const eventWithData = new CustomEvent('contactAddedToListWithData', {detail: formObject})
+    
+    // console.log(this)
+    //emitir o evento
+    document.dispatchEvent(event)
+    document.dispatchEvent(eventWithData)
+
     //Comunicar com API externa
   }catch (error) {
     console.error(error)
@@ -44,10 +55,16 @@ contactForm.addEventListener('submit',(e)=>{
 })
 }
 
+
+
 function registerFormReset(){
   contactForm.addEventListener('reset', ()=>{
     contactForm._id.value = ''
   })
 }
+
+document.addEventListener('contactAddedToList', (e)=>{
+  console.log('form')
+})
 
 export {registerFormEvents, setFormData}
